@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Leaderboard</h1>
+    <table id="leaderboard">
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+        <!-- Student data will be inserted here by JavaScript -->
+    </table>
+
+    <script>
+        // Student data - replace with your actual student names and scores
+        const students = [
+            {name: "Student 1", score: 95},
+            {name: "Student 2", score: 88},
+            {name: "Student 3", score: 92},
+            {name: "Student 4", score: 85},
+            {name: "Student 5", score: 90},
+            {name: "Student 6", score: 87},
+            {name: "Student 7", score: 93},
+            {name: "Student 8", score: 89},
+            {name: "Student 9", score: 91},
+            {name: "Student 10", score: 86},
+            {name: "Student 11", score: 94},
+            {name: "Student 12", score: 84},
+            {name: "Student 13", score: 88}
+        ];
+
+        // Sort students by score in descending order
+        students.sort((a, b) => b.score - a.score);
+
+        // Get the table body
+        const tableBody = document.getElementById('leaderboard');
+
+        // Populate the table with student data
+        students.forEach((student, index) => {
+            const row = tableBody.insertRow();
+            row.insertCell(0).textContent = index + 1;  // Rank
+            row.insertCell(1).textContent = student.name;
+            row.insertCell(2).textContent = student.score;
+        });
+    </script>
+</body>
+</html>
