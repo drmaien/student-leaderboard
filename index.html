@@ -3,73 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Leaderboard</title>
+    <title>PHYS 652 - Quantum Mechanics 2 Leaderboard</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
+            font-family: 'Orbitron', sans-serif;
+            background-color: #000;
+            color: #0ff;
+            margin: 0;
             padding: 20px;
+            background-image: url('https://via.placeholder.com/1920x1080.png?text=Quantum+Realm+Background');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 20, 40, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px #0ff;
+        }
+        h1 {
+            text-align: center;
+            color: #FF8C00; /* Dark Orange */
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.7);
+        }
+        h2 {
+            text-align: center;
+            color: #FFD700; /* Gold */
         }
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0 10px;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            padding: 15px;
             text-align: left;
+            background-color: rgba(0, 40, 80, 0.6);
         }
         th {
-            background-color: #f2f2f2;
+            background-color: rgba(0, 60, 120, 0.8);
+            color: #FFD700; /* Gold */
         }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        tr {
+            transition: transform 0.3s ease-in-out;
+        }
+        tr:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px #0ff;
+        }
+        .rank {
+            font-weight: bold;
+            color: #f90;
+        }
+        .stars {
+            color: #ff0;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255, 140, 0, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(255, 140, 0, 0.7), 0 0 30px rgba(255, 140, 0, 0.7); }
+            100% { text-shadow: 0 0 5px rgba(255, 140, 0, 0.7); }
+        }
+        .glow {
+            animation: glow 2s infinite;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Student Leaderboard</h1>
-    <table id="leaderboard">
-        <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Score</th>
-        </tr>
-        <!-- Student data will be inserted here by JavaScript -->
-    </table>
+    <div class="container">
+        <h1 class="glow">PHYS 652 - Quantum Mechanics 2</h1>
+        <h2>Leaderboard by Dr. Maien Binjonaid</h2>
+        <table id="leaderboard">
+            <tr>
+                <th>Rank</th>
+                <th>Nickname</th>
+                <th>Score</th>
+                <th>Stars</th>
+            </tr>
+            <!-- Student data will be inserted here by JavaScript -->
+        </table>
+    </div>
 
     <script>
-        // Student data - replace with your actual student names and scores
-        const students = [
-            {name: "Student 1", score: 95},
-            {name: "Student 2", score: 88},
-            {name: "Student 3", score: 92},
-            {name: "Student 4", score: 85},
-            {name: "Student 5", score: 90},
-            {name: "Student 6", score: 87},
-            {name: "Student 7", score: 93},
-            {name: "Student 8", score: 89},
-            {name: "Student 9", score: 91},
-            {name: "Student 10", score: 86},
-            {name: "Student 11", score: 94},
-            {name: "Student 12", score: 84},
-            {name: "Student 13", score: 88}
-        ];
+    const students = [
+        {nickname: "Quantum Explorer", score: 95, stars: 5},     // Actual Name: John Doe
+        {nickname: "Wave Function", score: 88, stars: 4},        // Actual Name: Jane Smith
+        {nickname: "Schrödinger's Ace", score: 92, stars: 4},    // Actual Name: Ahmad Al-Faisal
+        {nickname: "Bohr Brilliance", score: 85, stars: 3},      // Actual Name: Maria Garcia
+        {nickname: "Planck's Constant", score: 90, stars: 4},    // Actual Name: Yuki Tanaka
+        {nickname: "Heisenberg's Best", score: 87, stars: 3},    // Actual Name: Omar Hassan
+        {nickname: "Quantum Leap", score: 93, stars: 5},         // Actual Name: Emily Chang
+        {nickname: "Spin Doctor", score: 89, stars: 4},          // Actual Name: Carlos Rodriguez
+        {nickname: "Entanglement Pro", score: 91, stars: 4},     // Actual Name: Fatima Al-Saud
+        {nickname: "Particle Pathfinder", score: 86, stars: 3},  // Actual Name: Alex Johnson
+        {nickname: "Superposition Sage", score: 94, stars: 5},   // Actual Name: Zainab Mahmoud
+        {nickname: "Qubit Quest", score: 84, stars: 3},          // Actual Name: David Lee
+        {nickname: "Uncertainty Principle", score: 88, stars: 4} // Actual Name: Sarah Patel
+    ];
 
-        // Sort students by score in descending order
-        students.sort((a, b) => b.score - a.score);
+    students.sort((a, b) => b.score - a.score);
 
-        // Get the table body
-        const tableBody = document.getElementById('leaderboard');
+    const tableBody = document.getElementById('leaderboard');
 
-        // Populate the table with student data
-        students.forEach((student, index) => {
-            const row = tableBody.insertRow();
-            row.insertCell(0).textContent = index + 1;  // Rank
-            row.insertCell(1).textContent = student.name;
-            row.insertCell(2).textContent = student.score;
-        });
-    </script>
+    students.forEach((student, index) => {
+        const row = tableBody.insertRow();
+        row.insertCell(0).innerHTML = `<span class="rank">${index + 1}</span>`;
+        row.insertCell(1).textContent = student.nickname;
+        row.insertCell(2).textContent = student.score;
+        row.insertCell(3).innerHTML = '<span class="stars">' + '★'.repeat(student.stars) + '</span>';
+    });
+</script>
 </body>
 </html>
