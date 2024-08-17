@@ -10,7 +10,7 @@
             background-color: #000;
             color: #0ff;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             background-image: url('https://via.placeholder.com/1920x1080.png?text=Quantum+Realm+Background');
             background-size: cover;
             background-attachment: fixed;
@@ -20,17 +20,19 @@
             margin: 0 auto;
             background-color: rgba(0, 20, 40, 0.8);
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0 0 20px #0ff;
         }
         h1 {
             text-align: center;
             color: #FF8C00; /* Dark Orange */
             text-shadow: 0 0 10px rgba(255, 140, 0, 0.7);
+            font-size: 24px;
         }
         h2 {
             text-align: center;
             color: #FFD700; /* Gold */
+            font-size: 18px;
         }
         table {
             width: 100%;
@@ -38,7 +40,7 @@
             border-spacing: 0 10px;
         }
         th, td {
-            padding: 15px;
+            padding: 10px;
             text-align: left;
             background-color: rgba(0, 40, 80, 0.6);
         }
@@ -68,6 +70,26 @@
         .glow {
             animation: glow 2s infinite;
         }
+        @media (max-width: 600px) {
+            body {
+                padding: 5px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 16px;
+            }
+            table, th, td {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px 5px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -87,33 +109,33 @@
     </div>
 
     <script>
-    const students = [
-        {nickname: "Quantum Explorer", score: 95, stars: 5},     // Actual Name: John Doe
-        {nickname: "Wave Function", score: 88, stars: 4},        // Actual Name: Jane Smith
-        {nickname: "Schrödinger's Ace", score: 92, stars: 4},    // Actual Name: Ahmad Al-Faisal
-        {nickname: "Bohr Brilliance", score: 85, stars: 3},      // Actual Name: Maria Garcia
-        {nickname: "Planck's Constant", score: 90, stars: 4},    // Actual Name: Yuki Tanaka
-        {nickname: "Heisenberg's Best", score: 87, stars: 3},    // Actual Name: Omar Hassan
-        {nickname: "Quantum Leap", score: 93, stars: 5},         // Actual Name: Emily Chang
-        {nickname: "Spin Doctor", score: 89, stars: 4},          // Actual Name: Carlos Rodriguez
-        {nickname: "Entanglement Pro", score: 91, stars: 4},     // Actual Name: Fatima Al-Saud
-        {nickname: "Particle Pathfinder", score: 86, stars: 3},  // Actual Name: Alex Johnson
-        {nickname: "Superposition Sage", score: 94, stars: 5},   // Actual Name: Zainab Mahmoud
-        {nickname: "Qubit Quest", score: 84, stars: 3},          // Actual Name: David Lee
-        {nickname: "Uncertainty Principle", score: 88, stars: 4} // Actual Name: Sarah Patel
-    ];
+        const students = [
+            {nickname: "Quantum Explorer", score: 95, stars: 5},     // Actual Name: John Doe
+            {nickname: "Wave Function", score: 88, stars: 4},        // Actual Name: Jane Smith
+            {nickname: "Schrödinger's Ace", score: 92, stars: 4},    // Actual Name: Ahmad Al-Faisal
+            {nickname: "Bohr Brilliance", score: 85, stars: 3},      // Actual Name: Maria Garcia
+            {nickname: "Planck's Constant", score: 90, stars: 4},    // Actual Name: Yuki Tanaka
+            {nickname: "Heisenberg's Best", score: 87, stars: 3},    // Actual Name: Omar Hassan
+            {nickname: "Quantum Leap", score: 93, stars: 5},         // Actual Name: Emily Chang
+            {nickname: "Spin Doctor", score: 89, stars: 4},          // Actual Name: Carlos Rodriguez
+            {nickname: "Entanglement Pro", score: 91, stars: 4},     // Actual Name: Fatima Al-Saud
+            {nickname: "Particle Pathfinder", score: 86, stars: 3},  // Actual Name: Alex Johnson
+            {nickname: "Superposition Sage", score: 94, stars: 5},   // Actual Name: Zainab Mahmoud
+            {nickname: "Qubit Quest", score: 84, stars: 3},          // Actual Name: David Lee
+            {nickname: "Uncertainty Principle", score: 88, stars: 4} // Actual Name: Sarah Patel
+        ];
 
-    students.sort((a, b) => b.score - a.score);
+        students.sort((a, b) => b.score - a.score);
 
-    const tableBody = document.getElementById('leaderboard');
+        const tableBody = document.getElementById('leaderboard');
 
-    students.forEach((student, index) => {
-        const row = tableBody.insertRow();
-        row.insertCell(0).innerHTML = `<span class="rank">${index + 1}</span>`;
-        row.insertCell(1).textContent = student.nickname;
-        row.insertCell(2).textContent = student.score;
-        row.insertCell(3).innerHTML = '<span class="stars">' + '★'.repeat(student.stars) + '</span>';
-    });
-</script>
+        students.forEach((student, index) => {
+            const row = tableBody.insertRow();
+            row.insertCell(0).innerHTML = `<span class="rank">${index + 1}</span>`;
+            row.insertCell(1).textContent = student.nickname;
+            row.insertCell(2).textContent = student.score;
+            row.insertCell(3).innerHTML = '<span class="stars">' + '★'.repeat(student.stars) + '</span>';
+        });
+    </script>
 </body>
 </html>
